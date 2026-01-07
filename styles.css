@@ -1,0 +1,68 @@
+﻿/* --- 1. Variables & Global Resets --- */
+:root {
+    --bg-main: #0f1113;
+    --card-surface: #181a1d;
+    --accent-cyan: #00d1ff;
+    --accent-purple: #a855f7;
+    --text-primary: #e1e1e1;
+    --border-subtle: #2f3336;
+    --transition: all 0.3s ease;
+    --bg-search: #272729;
+    --search-border: #343536;
+    --search-text: #d7dadc;
+    --search-hover: #1a1a1b;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    line-height: 1.5;
+}
+
+
+/* --- 2. Navigation & Layout --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 24px;
+    background: var(--card-surface);
+    border-bottom: 1px solid var(--border-subtle);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 380px; /* Sidebar width for filters */
+    gap: 25px;
+}
+
+
+/* --- 3. Search Bar Components --- */
+.search-container {
+    flex-grow: 1;
+    max-width: 600px;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+}
+
+
+#searchBar {
+    width: 100%;
+    background-color: var(--bg-search);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23818384' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3

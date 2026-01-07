@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FandomForge NYC | Sci-Fi & Fantasy Collective</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+    <header class="navbar">
+        <div class="logo">FandomForge<span>NYC</span></div>
+        <div class="search-container">
+            <input type="text" id="searchBar" 
+                   placeholder="Search costumes, materials, events..." 
+                   aria-label="Search the forge">
+        </div>
+        <div class="auth-buttons">
+            <button type="button" class="btn-secondary" id="loginBtn">Login</button>
+            <button type="button" class="btn-primary" id="joinBtn">Join Community</button>
+        </div>
+    </header>
+
+
+    <main class="container">
+        <section class="feed" id="mainFeed">
+            
+            <div class="card create-post-bar">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mandalorian" class="user-avatar" alt="User">
+                <div class="post-input-container">
+                    <input type="text" id="newPostTitle" placeholder="Title of your build..." class="post-input-inline">
+                    <textarea id="newPostContent" placeholder="Share your latest build details.." class="post-input-inline"></textarea>
+                </div>
+                <button type="button" class="btn-post" id="submitPostBtn">Post</button>
+            </div>
+
+
+            <nav class="feed-tabs">
+                <button type="button" class="tab-btn active" data-category="all">All Feeds</button>
+                <button type="button" class="tab-btn" data-category="sci-fi">🚀 Sci-Fi</button>
+                <button type="button" class="tab-btn" data-category="fantasy">⚔️ Fantasy</button>
+            </nav>
+
+
+            <div id="postsContainer">
+                <article class="post sci-fi">
+                    <div class="vote-sidebar">
+                        <button type="button" class="vote-btn upvote">▲</button>
+                        <span class="vote-count">142</span>
+                        <button type="button" class="vote-btn downvote">▼</button>
+                    </div>
+                    <div class="post-content">
+                        <p class="post-meta"><span class="badge sci-fi">Sci-Fi</span> Posted by u/MandalorianNYC</p>
+                        <h2>WIP: Beskar Armor using local NYC Sintra</h2>
+                        <div class="post-image-placeholder"></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+
+        <aside class="sidebar">
+            
+            <div class="card">
+                <div class="sidebar-header">
+                    <h3>NYC Material Map</h3>
+                    <div class="filter-group">
+                        <select id="boroughFilter" class="btn-sm" onchange="window.updateMapFilters()">
+                            <option value="all">All Boroughs</option>
+                            <option value="Manhattan">Manhattan</option>
+                            <option value="Brooklyn">Brooklyn</option>
+                            <option value="Queens">Queens</option>
+                            <option value="Bronx">Bronx</option>
+                        </select>
+                        <select id="typeFilter" class="btn-sm" onchange="window.updateMapFilters()">
+                            <option value="all">All Types</option>
+                            <option value="Fabric">Fabric Only</option>
+                            <option value="Trims">Trims & Notions</option>
+                            <option value="Supplies">Sewing Supplies</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="meetupMap"></div>
+            </div>
+
+
+            <div class="card">
+                <div class="sidebar-header">
+                    <h3>Cosplay Events</h3>
+                    <span id="calendarMonth" class="date-label">Jan 2026</span>
+                </div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+                <div id="eventDetails" class="event-preview">Select a date to view meetups</div>
+            </div>
+            
+        </aside>
+    </main>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
