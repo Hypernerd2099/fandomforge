@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FandomForge NYC | Sci-Fi & Fantasy Collective</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">FandomForge<span>NYC</span></div>
+        
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="searchBar" placeholder="Search costumes, materials, events...">
+        </div>
+        
+        <div class="auth-buttons">
+    <button type="button" class="btn-pill btn-outline" onclick="window.location.href='login.html'">Log In</button>
+    <button type="button" class="btn-pill btn-solid" onclick="window.location.href='login.html?signup=true'">Join Collective</button>
+</div>
+    </header>
+
+    <main class="container">
+        <section class="feed" id="mainFeed">
+           <div class="card create-post-bar">
+    <div class="create-post-upper">
+        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Maker" alt="User" class="post-avatar" id="userAvatarDisplay">
+        <div class="input-group" style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+            <input type="text" id="postTitleInput" placeholder="Give your post a title..." 
+                   style="background: var(--bg-search); border: 1px solid var(--border-subtle); color: white; padding: 10px; border-radius: 6px;">
+            <textarea id="postContentInput" placeholder="What are you working on?" 
+                      style="background: var(--bg-search); border: 1px solid var(--border-subtle); color: white; padding: 10px; border-radius: 6px; resize: none;"></textarea>
+        </div>
+    </div>
+    <div class="create-post-actions">
+        <button class="btn-pill btn-solid" id="submitPostBtn">Forge Post</button>
+    </div>
+</div>
+</div>
+
+            <div id="postsContainer">
+                <div class="loading">Igniting the forge...</div>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <div class="card">
+                <div class="sidebar-header">
+                    <h3>Material Map</h3>
+                    <div class="filter-group">
+                        <select id="boroughFilter" onchange="window.updateMapFilters()">
+                            <option value="all">All Boroughs</option>
+                            <option value="Manhattan">Manhattan</option>
+                            <option value="Brooklyn">Brooklyn</option>
+                            <option value="Queens">Queens</option>
+                            <option value="Bronx">Bronx</option>
+                            <option value="Staten Island">Staten Island</option>
+                        </select>
+                        <select id="typeFilter" onchange="window.updateMapFilters()">
+                            <option value="all">All Types</option>
+                            <option value="Fabric">Fabric</option>
+                            <option value="Trims">Trims</option>
+                            <option value="Props">Props & Armor</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="meetupMap" style="height: 300px; border-radius: 8px; margin-top: 15px;"></div>
+            </div>
+
+            <div class="card">
+                <h3>Community News</h3>
+                <div id="newsContainer" class="news-list">
+                    </div>
+            </div>
+        </aside>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
